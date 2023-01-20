@@ -11,7 +11,7 @@
         <input type="text" name="id" id="id" placeholder="id">
         <input type="text" name="nom" id="nom" placeholder="nom">
         <select>
-            <option value=""></option>
+            <option value="">type</option>
             <option value="Grass">Grass</option>
             <option value="Poison">Poison</option>
             <option value="Fire">Fire</option>
