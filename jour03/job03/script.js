@@ -29,7 +29,7 @@ function checkMove() {
   $(".6").click(() => {
     if (empty == 9 && empty != 6) {
       $(".9").append($(`#img${randomPos[5]}`));
-      $(".6").toggleClass("empty");
+      // $(".6").toggleClass("empty");
       return empty = 6;
     }
   });
