@@ -1,19 +1,19 @@
 <?php
 // connection avec mysqli
 try {
-    $db = new mysqli(
-    'localhost','root','','utilisateurs');
+    $bdd = new PDO('mysql:host=localhost;dbname=utilisateurs;charset=utf8', 'root', '');
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
 // on prépare 
-$usersStatement = $db->query('SELECT * FROM utilisateurs');
+$usersStatement = $bdd->prepare('SELECT * FROM utilisateurs');
+$usersStatement->execute();
 
 // on fetch
-while($utilisateurs = $usersStatement->fetch_assoc()) {
-    $data[] = $utilisateurs;
-};
+$utilisateurs = $usersStatement->fetchAll(PDO::FETCH_ASSOC);
+    
+
 
 //sortie en json
-echo json_encode($data);
+print json_encode($utilisateurs);
