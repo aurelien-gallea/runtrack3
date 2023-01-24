@@ -1,0 +1,17 @@
+.barre {
+    background-color: black;
+    width: 50px;
+    height: 10px;
+    border-radius: 50rem;
+    margin: 0.5rem;
+    
+}
+#burger { display: none;}
+@media all and (max-width: 767px) {
+    ul{
+        display: none;
+    }
+    #burger {
+        display: block;
+    }
+}
