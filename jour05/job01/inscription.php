@@ -19,6 +19,7 @@ if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) 
 
 			if($resultat['nombre'] != 0) {
 				header('location: ./inscription.php/?error=true&message=Email déjà existant');
+                exit();
 			} else {
               // on ajoute l'utilisateur
             $requete = $bdd->prepare('INSERT INTO utilisateurs(nom, prenom, email, password) VALUES (?,?,?,?)');
@@ -45,53 +46,54 @@ if(!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) 
     <title>Inscription</title>
 </head>
 <body>
-    <h1>Inscription</h1>
     <form id="form-inscription" action="inscription.php" method="post">
+        <h1>Inscription</h1>
         <p>
             <label for="nom">Nom :</label>    
             <input type="text" name="nom" id="nom" >
-            <div><span class="alert nom">nom incorrect</span></div>
         </p>
         <p>
             <label for="prenom">Prénom :</label>
             <input type="text" name="prenom" id="prenom" >
-            <div><span class="alert prenom">prenom incorrect</span></div>
-
+            
         </p>
         <p>
             <label for="email">Votre Email :</label>
             <input type="email" name="email" id="email" >
-            <div><span class="alert mail">format du mail incorrect</span></div>
-            <div><span class="alert mail-exist">mail déjà existant</span></div>
-
+            
         </p>
         <p>
             <label for="password">Mot de passe :</label>
             <input type="password" name="password" id="password" >
-            <div><span class="alert password">Le mot de passe doit contenir: 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial</span></div>
-
+            
         </p>
         <p>
-            <label for="password-confirm">Confirmer votre Mot de passe :</label>
+            <label for="password-confirm">Confirmer votre Mdp :</label>
             <input type="password" name="password-confirm" id="password-confirm">
-            <div><span class="alert password-confirm">Les mots de passes doivent-être identique</span></div>
-
+            
         </p>
         <p>
             <input class="btn" type="submit" value="S'inscrire">
         </p>
-    </form>
+        <div><span class="alert nom">nom incorrect</span></div>
+    <div><span class="alert prenom">prenom incorrect</span></div>
+    <div><span class="alert mail">format du mail incorrect</span></div>
+    <div><span class="alert mail-exist">mail déjà existant</span></div>
+    <div><span class="alert password">Le mot de passe doit contenir: 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial</span></div>
+    <div><span class="alert password-confirm">Les mots de passes doivent-être identique</span></div>
     <?php if(isset($_GET['error']) && isset($_GET['message'])) { ?>
-                    
+        
         <div>
             <div>
                 <b><?php echo htmlspecialchars($_GET['message']); ?></b>
             </div>
         </div>
-
-    <?php } ?>
-    <script src="inscription.js"></script>
-</body>
-</html>
-<?php
+        
+        <?php } ?>
+    </form>
+    
+        <script src="inscription.js"></script>
+    </body>
+    </html>
+    <?php
 

@@ -6,8 +6,20 @@ body {
     align-items: center;
 }
 form {
-    width: 40%;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
     
+    margin: 0 auto;
+}
+input {
+    font-size: 1.2em;
+}
+h1 {
+    text-align: center;
+}
+p {
+    width: 150px;
 }
 .orange {
     background-color: orange;
@@ -24,7 +36,8 @@ form {
 .alert {
     background-color: rgb(231, 85, 85);
     padding: 0.3rem 0.6rem;
-    line-height: 1.5rem;
+    line-height: 1.8em;
+    font-size: 1.2em;
     color: white;
     border-radius: 0.5rem;
 }
@@ -51,3 +64,4 @@ input {
     filter: grayscale(80);
     cursor: not-allowed;
 }
+

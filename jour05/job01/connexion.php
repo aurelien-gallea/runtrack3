@@ -20,7 +20,9 @@
             }    
         }
         if($count!=1) {
-                echo "mauvais mdp/login";
+            header('Location: connexion.php?erreur=1');
+            $count = 0;
+
         }
         
     }
@@ -31,11 +33,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/style.css">
     <title>Connexion</title>
 </head>
 <body>
-    <h1>Connexion</h1>
+    
     <form action="connexion.php" method="post">
+        <h1>Connexion</h1>
         <p>
             <label for="email">Email :</label>
             <input type="email" name="email" id="email" required>
@@ -45,8 +49,16 @@
             <input type="password" name="password" id="password" required>
         </p>
         <p>
-            <input type="submit" value="Se connecter">
+            <input class= "btn" type="submit" value="Se connecter">
         </p>
+        <?php
+ if(isset($_GET['erreur'])){
+ $err = $_GET['erreur'];
+ if($err==1 )
+ echo "<p class='alert''>Utilisateur ou mot de passe incorrect</p>";
+ }
+ ?>
     </form>
+
 </body>
 </html>
